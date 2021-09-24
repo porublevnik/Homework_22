@@ -1,17 +1,3 @@
-#### Блок кода для перехвата вывода в консоль ####
-import sys
-
-output_data = []
-
-
-def print(s):
-    sys.stdout.write(s)
-    sys.stdout.write('\n')
-    output_data.append(s)
-
-
-#### /Блок кода для перехвата вывода в консоль ####
-
 # Стартовый код
 class Company:
     def __init__(self, name: str, address: str, phone: str):
@@ -75,35 +61,3 @@ class Receipt:
             print(f'{title_with_unit} - {item.quantity} - {item.get_price()}')
             total_price += item.get_price()
         print(f'Всего: {total_price}')
-
-
-# Тесты
-def test_assert(condition, correct, incorrect):
-    try:
-        assert condition, incorrect
-        print(correct)
-    except AssertionError as e:
-        print(e.args[0])
-
-
-test_disc = 0.8
-test_discount = Discount()
-test_discount.add_discount(title='котики', discount=test_disc)
-
-test_assert(
-    output_data == ['Сушеные питоны, упаковка. - 5 - 450.0',
-                    'Книги про PHP, шт. - 10 - 11.0',
-                    'Кофе плохорастворенный, л. - 0.2 - 200.0',
-                    'Всего: 661.0'], correct='Вывод в консоль верный', incorrect='Вывод в консоль НЕ верный')
-
-test_item = Item(title='котики',
-                 unit='шт.',
-                 price_for_unit=100,
-                 quantity=1,
-                 discount=test_discount)
-test_value = test_discount.check_discount(title='котики')
-
-test_assert(test_value == test_disc, correct='Функции класса Discount реализованы верно',
-            incorrect='Функции класса Discount реализованы НЕ верно')
-test_assert(test_item.get_price() >19.999 and test_item.get_price() <=20, correct='Функиця "_calculate_discount" класса Item реализована верно',
-            incorrect='Функиця "_calculate_discount" класса Item реализована НЕ верно')

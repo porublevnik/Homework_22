@@ -1,18 +1,3 @@
-#### Блок кода для перехвата вывода в консоль ####
-import sys
-
-output_data = []
-
-
-def print(s):
-    if not isinstance(s, str):
-        s = str(s)
-    sys.stdout.write(s)
-    sys.stdout.write('\n')
-    output_data.append(s)
-
-
-#### /Блок кода для перехвата вывода в консоль ####
 
 # Решение
 class Goods:
@@ -52,42 +37,17 @@ class Cookies(Goods):
         if 'quantity' in kwargs:
             self.quantity = kwargs['quantity']
 
+if __name__ == '__main__':
+        
+    my_coffee = Coffee(title='Кофе', units='г.', quantity=3)
+    another_coffee = Coffee(title='Кофе', units='ведр.')
+    my_water = Water(title='Вода', units='л.', quantity=4)
+    another_water = Water(title='Вода', quantity=5)
+    my_cookies = Cookies(title='Печеньки', units='уп.', quantity=1)
+    
+    my_coffee.prnt()
+    my_water.prnt()
+    my_cookies.prnt()
+    another_water.prnt()
+    another_coffee.prnt()
 
-my_coffee = Coffee(title='Кофе', units='г.', quantity=3)
-another_coffee = Coffee(title='Кофе', units='ведр.')
-my_water = Water(title='Вода', units='л.', quantity=4)
-another_water = Water(title='Вода', quantity=5)
-my_cookies = Cookies(title='Печеньки', units='уп.', quantity=1)
-
-my_coffee.prnt()
-my_water.prnt()
-my_cookies.prnt()
-another_water.prnt()
-another_coffee.prnt()
-
-
-# Тесты
-def test_assert(condition, correct, incorrect):
-    try:
-        assert condition, incorrect
-        print(correct)
-    except AssertionError as e:
-        print(e.args[0])
-
-
-test_coffee = Coffee(title='Кофе', units='г.', quantity=5)
-test2_coffee = Coffee(title='Много кофе')
-
-test_assert(
-    output_data == ['Кофе 3 г.',
-                    'Вода 4 л.',
-                    'Печеньки 1 уп.',
-                    'Вода 5 л.',
-                    'Кофе 3 ведр.'], correct='Вывод в консоль верный',
-    incorrect='Вывод в консоль НЕ верный')
-
-test_assert(all((test_coffee.units == 'г.', test2_coffee.units == 'л.')), correct='Затенение units реализовано верно',
-            incorrect='Затенение units реализовано НЕ верно')
-
-test_assert(all((test_coffee.quantity == 5, test2_coffee.quantity == 3)),
-            correct='Затенение quantity реализовано верно', incorrect='Затенение quantity реализовано НЕ верно')

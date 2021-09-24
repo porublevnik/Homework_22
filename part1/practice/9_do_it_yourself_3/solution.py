@@ -1,21 +1,5 @@
 from __future__ import annotations
-import sys
 from typing import List
-
-#### Блок кода для перехвата вывода в консоль ####
-
-output_data = []
-
-
-def print(s):
-    if not isinstance(s, str):
-        s = str(s)
-    sys.stdout.write(s)
-    sys.stdout.write('\n')
-    output_data.append(s)
-
-
-#### /Блок кода для перехвата вывода в консоль ####
 
 
 class ServerConnectionError(Exception):
@@ -109,58 +93,20 @@ class WebServer(Server):
         db.add_record(record='We got new oder!')
 
 
-build_server = BuildServer(title='Build Machine')
-db = DataBaseServer(title='DataBase')
-report_mail_server = MailServer(title='Report Server')
-maintainers_mail_server = MailServer(title='Maintainers Mailboxes')
-web = WebServer(title='Our Site')
+if __name__ == '__main__':
+    build_server = BuildServer(title='Build Machine')
+    db = DataBaseServer(title='DataBase')
+    report_mail_server = MailServer(title='Report Server')
+    maintainers_mail_server = MailServer(title='Maintainers Mailboxes')
+    web = WebServer(title='Our Site')
 
-web.run_web_application()
-build_server.make_connection_between_to_servers(server_1=web, server_2=db, ports=[100, 200])
-web.save_order(db=db)
-build_server.make_connection_between_to_servers(server_1=web,
-                                                server_2=report_mail_server,
-                                                ports=[300, 400])
-build_server.make_connection_between_to_servers(server_1=report_mail_server,
-                                                server_2=maintainers_mail_server,
-                                                ports=[13])
-web.error_report(_from=report_mail_server, _to=maintainers_mail_server)
-
-
-# Тесты
-def test_assert(condition, correct, incorrect):
-    try:
-        assert condition, incorrect
-        print(correct)
-    except AssertionError as e:
-        print(e.args[0])
-
-
-test_assert(
-    output_data == ["Yahoo! We are online!",
-                    "New record in DB - We got new oder!",
-                    'We get message = "Something Wrong" from MailServer',
-                    ], correct='Вывод в консоль верный',
-    incorrect='Вывод в консоль НЕ верный')
-
-test_assert('Server' in globals(), correct='Выделен общий класс Server',
-            incorrect='Нужно определить класс-родитель Server')
-test_assert('add_ports' in Server.__dict__, correct='У класса Server есть метод "add_ports"',
-            incorrect='У класса Server отсутствует метод "add_ports"')
-test_assert('add_visible_server' in Server.__dict__, correct='У класса Server есть метод "add_visible_server"',
-            incorrect='У класса Server отсутствует метод "add_visible_server"')
-test_assert('get_title' in Server.__dict__, correct='У класса Server есть метод "get_title"',
-            incorrect='У класса Server отсутствует метод "get_title"')
-test_assert('get_opened_ports' in Server.__dict__, correct='У класса Server есть метод "get_opened_ports"',
-            incorrect='У класса Server отсутствует метод "get_opened_ports"')
-test_assert('get_visitable_severs' in Server.__dict__, correct='У класса Server есть метод "get_visitable_severs"',
-            incorrect='У класса Server отсутствует метод "get_visitable_severs"')
-test_assert('check_connection' in Server.__dict__, correct='У класса Server есть метод "check_connection"',
-            incorrect='У класса Server отсутствует метод "check_connection"')
-test_assert('_check_visibility' in Server.__dict__, correct='У класса Server есть метод "_check_visibility"',
-            incorrect='У класса Server отсутствует метод "_check_visibility"')
-test_assert('_check_is_visible_server' in Server.__dict__,
-            correct='У класса Server есть метод "_check_is_visible_server"',
-            incorrect='У класса Server отсутствует метод "_check_is_visible_server"')
-test_assert('_check_opened_ports' in Server.__dict__, correct='У класса Server есть метод "_check_opened_ports"',
-            incorrect='У класса Server отсутствует метод "_check_opened_ports"')
+    web.run_web_application()
+    build_server.make_connection_between_to_servers(server_1=web, server_2=db, ports=[100, 200])
+    web.save_order(db=db)
+    build_server.make_connection_between_to_servers(server_1=web,
+                                                    server_2=report_mail_server,
+                                                    ports=[300, 400])
+    build_server.make_connection_between_to_servers(server_1=report_mail_server,
+                                                    server_2=maintainers_mail_server,
+                                                    ports=[13])
+    web.error_report(_from=report_mail_server, _to=maintainers_mail_server)
