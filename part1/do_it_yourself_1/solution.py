@@ -5,7 +5,7 @@ class UnitDied(Exception):
 
 
 class Unit:
-    def __init__(self, name: str, hp: int, defence: int, power: int):
+    def __init__(self, name, hp, defence, power):
         self.name = name
         self.hp = hp
         self.defence = defence
@@ -16,12 +16,12 @@ class Unit:
         other.get_damage(damage)
         return f"{self.name} ({self.hp}) наносит {damage} урона {other.name} ({other.hp})"
 
-    def get_damage(self, damage: int):
+    def get_damage(self, damage):
         if damage > self.defence:
             self.hp -= (damage - self.defence)
         self.is_alive()
 
-    def is_alive(self) -> bool:
+    def is_alive(self):
         if self.hp <= 0:
             raise UnitDied(f'Трагически погиб в неравном бою {self.name}')
         return True

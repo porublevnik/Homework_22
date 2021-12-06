@@ -42,12 +42,12 @@
 class Storage:
     goods_quantity = 10
 
-    def __init__(self, qnt: int):
+    def __init__(self, qnt):
         # TODO напишите Ваш код здесь
         # self.goods_quantity =                    # Оставим эту строчку для Вас в качестве подсказки
         pass
     @classmethod
-    def _get_total(cls) -> int:
+    def _get_total(cls):
         # TODO напишите Ваш код здесь
         pass
 

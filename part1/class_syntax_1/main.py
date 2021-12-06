@@ -19,35 +19,24 @@
 # Кофе, 0.2л - 60
 #
 # Функцию определяющую сумму покупок также необходимо будет доработать.
-# Теперь, чтобы посчитать сумму всех покупок необходимо использовать аргумент total_price
+# Теперь, чтобы посчитать сумму всех покупок необходимо использовать метод total_price
 # Формат вывода мы оставим прежний:
 # Cумма: 410
 
 class Item:
-    def __init__(self, title: str, price: int, unit: str, quantity: float):
+    def __init__(self, title, price):
         self.title = title
         self.price = price
-        self.unit = unit
-        self.quantity = quantity
-
-    def total_price(self):
-        return self.price * self.quantity
 
 class Cheque:
     def __init__(self):
-        self.company = None
         self.items = []
 
-    def add_item(self, title: str, price: int, unit: str, quantity: int):
-        item = Item(title=title, price=price, unit=unit, quantity=quantity)
-        self.items.append(item)
-
     def purchases(self):
-        return "\n".join(
-            [f"{item.title}, {item.quantity} {item.unit} - {item.total_price()}" for item in self.items])
+        return "\n".join([f"{item.title} - {item.price}" for item in self.items])
     
     def get_sum(self):
-        cheque_sum = sum([item.total_price() for item in self.items])
+        cheque_sum = sum([item.price for item in self.items])
         return f"Сумма: {cheque_sum}"
     
 # Это проверочный код, запустите файл, чтобы увидеть логику работы классов

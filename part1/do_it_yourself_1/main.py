@@ -51,16 +51,16 @@ class UnitDied(Exception):
 # TODO реализуйте класс Unit ниже
 
 class Unit:
-    def __init__(self, name: str, hp: int, defence: int, power: int):
+    def __init__(self, name, hp, defence, power):
         pass
 
-    def hit(self, other) -> str: # чтобы схватка была зрелищной, не забудьте здесь про return
+    def hit(self, other): # чтобы схватка была зрелищной, не забудьте здесь про return
         pass
 
-    def get_damage(self, damage: int):
+    def get_damage(self, damage):
         pass
 
-    def is_alive(self) -> bool:
+    def is_alive(self):
         pass
 
 

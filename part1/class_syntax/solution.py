@@ -1,11 +1,10 @@
 class Item:
-    def __init__(self, title: str, price: int):
+    def __init__(self, title, price):
         self.title = title
         self.price = price
 
 class Cheque:
     def __init__(self):
-        self.company = None
         self.items = []
 
     def purchases(self):

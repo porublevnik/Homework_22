@@ -25,22 +25,22 @@
 # 4. Попробуйте запустить файл, должно всё сработать корректно=)
 
 
-def check_item(store: dict, title: str):
+def check_item(store, title):
     return title in store
 
 
 class Store:
-    def add_item(self, store: dict, title: str, quantity: int):
+    def add_item(self, store, title, quantity):
         store[title] = store.get(title, 0) + quantity
 
-    def get_item(self, store: dict, title, quantity):
+    def get_item(self, store, title, quantity):
         if not check_item(store=store, title=title):
             return 'Не было на складе'
         quantity = self._check_quantity_limits(store=store, title=title, quantity=quantity)
         store[title] -= quantity
         return title, quantity
 
-    def _check_quantity_limits(self, store: dict, title: str, quantity: int) -> int:
+    def _check_quantity_limits(self, store, title, quantity):
         current_qnt = store[title]
         if current_qnt < quantity:
             quantity = current_qnt

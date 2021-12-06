@@ -1,5 +1,5 @@
 class Item:
-    def __init__(self, title: str, price: int, unit: str, quantity: float):
+    def __init__(self, title, price, unit, quantity):
         self.title = title
         self.price = price
         self.unit = unit
@@ -10,10 +10,9 @@ class Item:
 
 class Cheque:
     def __init__(self):
-        self.company = None
         self.items = []
 
-    def add_item(self, title: str, price: int, unit: str, quantity: int):
+    def add_item(self, title, price, unit, quantity):
         item = Item(title=title, price=price, unit=unit, quantity=quantity)
         self.items.append(item)
 

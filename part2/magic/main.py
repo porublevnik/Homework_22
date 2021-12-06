@@ -13,13 +13,13 @@
 
 
 class Item:
-    def __init__(self, title: str, unit: str, price_for_unit: float, quantity: float):
+    def __init__(self, title, unit, price_for_unit, quantity):
         self.title = title
         self.unit = unit
         self.price_for_unit = price_for_unit
         self.quantity = quantity
 
-    def total_price(self) -> float:
+    def total_price(self):
         price = float(self.price_for_unit * self.quantity)
         return price
 
