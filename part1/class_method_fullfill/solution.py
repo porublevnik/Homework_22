@@ -34,6 +34,5 @@ class Storage:
             self.goods_quantity = 0
 
     def fullfill(self):
-        total = self._get_total()
-        self.more(total)
+        self.goods_quantity = self.goods_quantity + self._get_total()
         self._set_total(0)

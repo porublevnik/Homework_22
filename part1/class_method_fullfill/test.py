@@ -48,7 +48,7 @@ class ClassesTestCase(SkyproTestCase):
             "%@Проверьте что свойству `goods_quantity` экземпляра класса при инициализации "
             "присваивается правильное значение"
             )
-        
+        self.storage._set_total(20)
 
         instance.more(4)
         self.assertTrue(
@@ -56,26 +56,52 @@ class ClassesTestCase(SkyproTestCase):
             "%@Проверьте что при применении к экземпляру класса метода more, его аттрибут "
             "goods_quantity увеличивается"
         )
-        result=instance.less(10)
-        self.assertFalse(
-            result,
-            "%@ Проверьте, что если мы пытаемся отнять у экземпляра класса с помощью метода less"
-            "больше товара, там сейчас содержится, то возвращается False"
+
+        self.assertTrue(
+            self.storage._get_total() == 16,
+            "%@Проверьте что при применении к экземпляру класса метода more, на складе "
+            "число товаров уменьшается"
+        )
+
+        instance.less(6)
+        self.assertTrue(
+            instance.goods_quantity == 1,
+            "%@Проверьте что при применении к экземпляру класса метода less, его аттрибут "
+            "goods_quantity уменьшается"
         )
 
         self.assertTrue(
-            instance.goods_quantity == 7,
-            "%@Проверьте что после неудачной попытки снижения числа товара, хранящегося в экземпляре "
-            "класса его значение `goods_quantity не изменилось"
-            )
-        
-        instance.less(3)
-        self.assertTrue(
-            instance.goods_quantity==4,
-            "%@Проверьте что если в экземпляре класса хватает товара для использовании функции less "
-            "то значение goods_quantity уменьшается"
-            )
+            self.storage._get_total() == 22,
+            "%@Проверьте что при применении к экземпляру класса метода less, на складе "
+            "число товаров увеличивается"
+        )
 
+        instance.less(2)
+        self.assertTrue(
+            instance.goods_quantity == 0,
+            "%@Проверьте что если к экземпляру класса применен метод less а товаров "
+            "недостаточно, тогда их число не становится меньше нуля"
+        )
+
+        self.assertTrue(
+            self.storage._get_total() == 23,
+            "%@Проверьте что если к экземпляру класса применен метод less а товаров "
+            "недостаточно, то на складе не возникают лишние товары"
+        )
+        instance.more(24)
+        self.assertTrue(
+            self.storage._get_total() == 0,
+            "%@Проверьте что если к экземпляру класса применен метод more а товаров "
+            "на складе недостаточно, значение последних не становится ниже нуля"
+        )
+
+        self.assertTrue(
+            instance.goods_quantity == 23,
+            "%@Проверьте что если к экземпляру класса применен метод more а товаров "
+            "на складе недостаточно, то в экземпляре класса не возникают лишние товары"
+        )
+        self.storage._set_total(6)
+        instance.goods_quantity = 0
         instance.fullfill()
         self.assertTrue(
             instance.goods_quantity == 6,

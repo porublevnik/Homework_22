@@ -12,7 +12,7 @@ class Unit:
         self.power = power
 
     def hit(self, other):
-        damage = random.choice(range(self.power))
+        damage = random.choice(range(1, self.power))
         other.get_damage(damage)
         return f"{self.name} ({self.hp}) наносит {damage} урона {other.name} ({other.hp})"
 

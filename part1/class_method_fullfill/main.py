@@ -40,9 +40,8 @@ class Storage:
             self.goods_quantity = 0
 
     def fullfill(self):
-        self.goods_quantity = self.goods_quantity + self._get_total()
-        self._set_total(0)
-        
+        # TODO напишите функцию здесь
+        pass
 
 
 # Посмотрите, что происходит с классом при применении различных методов.
