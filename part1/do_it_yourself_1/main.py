@@ -72,7 +72,7 @@ class Unit:
 # сочетания клавиш ctrl - C
 if __name__ == "__main__":
     unit1 = Unit(name='Басурманин заморский', hp=10, defence=1, power=5)
-    unit2 = Unit(name='Богатырь былинный', hp=30, defence=2, power=3)
+    unit2 = Unit(name='Богатырь былинный', hp=25, defence=2, power=3)
     try:
         while all((unit1.is_alive(), unit2.is_alive())):
             print(unit1.hit(unit2))
