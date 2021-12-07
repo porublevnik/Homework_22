@@ -38,6 +38,7 @@ class UnitTestCase(SkyproTestCase):
             self.unit_1.hp == 20,
             "%@Проверьте что функция hit работает корректно (один юнит наносит удар а второй получает урон)"
         )
+        self.unit_2.hp = 1
         self.unit_1.power = 100
         with self.assertRaises(UnitDied, msg="%@Проверьте что если уровень здоровье юнита меньше нуля, тогда он погибает"):
             self.unit_1.hit(self.unit_2)
