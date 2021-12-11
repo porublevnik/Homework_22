@@ -46,13 +46,14 @@ Pycharm может предложить вам сделать это после 
 - part1/class_method
 - part1/class_method_gt_lt
 - part1/class_method_fullfill
-- part1/do_it_yourself_1
-- part1/do_it_yourself_2
 
 #### Часть 2:
-
+- part2/heroes
+- part2/get_damage
+- part2/fury
+- part2/store
 - part2/magic
-
+- part2/wallet
 
 Задачи описаны в комментариях в файле main.py
 В текущих заданиях вы будете учиться основам ООП в Python, и применять его для

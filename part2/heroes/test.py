@@ -27,10 +27,10 @@ class UnitTestCase(SkyproTestCase):
                 f'%@Проверьте, что экземпляр класса Item имеет аттрибут {attr} '
                 "(Проверяем метод __init__)"
             )
-        self.unit_2.get_damage(5)
+        self.unit_2._get_damage(5)
         self.assertFalse(
             self.unit_2.hp == 20,
-            "%@Проверьте, что функция get_damage работает корректно (юнит получает урон)"
+            "%@Проверьте, что функция _get_damage работает корректно (юнит получает урон)"
         )
         
         self.unit_2.hit(self.unit_1)

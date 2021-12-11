@@ -58,7 +58,7 @@ class Unit:
     def hit(self, other): # чтобы схватка была зрелищной, не забудьте здесь про return
         pass
 
-    def get_damage(self, damage):
+    def _get_damage(self, damage):
         pass
 
     def is_alive(self):
