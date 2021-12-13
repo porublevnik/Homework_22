@@ -12,4 +12,4 @@ class Cheque:
     
     def get_sum(self):
         cheque_sum = sum([item.price for item in self.items])
-        return f"Сумма: {cheque_sum}"
+        return f"Всего: {cheque_sum}"

@@ -40,7 +40,7 @@ class ClassesTestCase(SkyproTestCase):
         self.cheque.items.extend([self.item_1, self.item_2])
 
         self.assertTrue(
-            self.cheque.purchases() == 'test_1, 3 тс - 3\ntest_1, 2 тс - 4',
+            self.cheque.purchases() == 'test_1, 3тс - 3\ntest_1, 2тс - 4',
             "%@Проверьте, в правильном ли формате возвращается список покупок "
             "при использовании функции purchases"
         )

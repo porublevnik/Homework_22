@@ -45,7 +45,7 @@ class ClassesTestCase(SkyproTestCase):
             "при использовании функции purchases"
         )
         self.assertTrue(
-            self.cheque.get_sum() == 'Сумма: 3',
+            self.cheque.get_sum() == 'Всего: 3',
             "%@Проверьте, правильно ли возвращается сумма покупок и правильно ли оформлен результат"
             " который возвращает функция get_sum "
         )

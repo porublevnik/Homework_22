@@ -18,7 +18,7 @@ class Cheque:
 
     def purchases(self):
         return "\n".join(
-            [f"{item.title}, {item.quantity} {item.unit} - {item.total_price()}" for item in self.items])
+            [f"{item.title}, {item.quantity}{item.unit} - {item.total_price()}" for item in self.items])
     
     def get_sum(self):
         cheque_sum = sum([item.total_price() for item in self.items])
