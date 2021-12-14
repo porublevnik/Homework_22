@@ -28,15 +28,15 @@
 #      на складе нулевое значение. А экземпляру класса передаём
 #      значение всех имеющихся на складе товаров.
 #
-# Например, значение total_quantity класса Storage = 5.
+# Например, значение goods_quantity класса Storage = 5.
 # Мы создаём экземпляр класса: goods = Storage(2)
 #
-# После этого аттрибут total_quantity класса Storage
+# После этого аттрибут goods_quantity класса Storage
 # должен измениться с 5 на 3
-# Storage.total_quantity=3
+# Storage.goods_quantity=3
 #
 # А аналогичный аттрибут экземпляра класса должен иметь значение 2
-# goods.total_quantity=2
+# goods.goods_quantity=2
 
 
 class Storage:
