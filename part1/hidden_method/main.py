@@ -8,7 +8,7 @@
 #             вызываем внутренний метод _calculate_discount и пересчитываем цену
 #         Если же свойство discount = None тогда возвращаем полную стоимость товара
 # - В классе Cheque
-#     Внесите соответсвующие изменения в метод add_item чтобы метод работал корректно
+#     Внесите соответсвующее изменение в метод add_item чтобы метод работал корректно
 # Стартовый код
 class Item:
     def __init__(self, title, price, unit, quantity):
@@ -35,10 +35,10 @@ class Cheque:
     def get_sum(self):
         cheque_sum = sum([item.total_price() for item in self.items])
         return f"Сумма: {cheque_sum}"
-    
+
+
 # Это проверочный код, запустите файл, чтобы увидеть логику работы классов
 if __name__ == '__main__':
-    # Создаём скидку
     # Создаём чек
     cheque = Cheque()
     # Добавляем товары в чек

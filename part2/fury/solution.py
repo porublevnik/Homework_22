@@ -1,7 +1,9 @@
 import random
 
+
 class UnitDied(Exception):
     pass
+
 
 class Unit:
     def __init__(self, name, hp, defence, power):
@@ -24,6 +26,7 @@ class Unit:
         if self.hp <= 0:
             raise UnitDied(f'Трагически погиб в неравном бою {self.name}')
         return True
+
 
 class FuriousHero(Unit):
 

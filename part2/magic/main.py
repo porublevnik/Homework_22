@@ -1,8 +1,8 @@
 # Реализовать для объектов Item методы
 # 1. Магический метод представления __repr__
-#    возвращающий строковое представление объекта 
+#    возвращающий строковое представление объекта.
 #    Будем ожидать что при вызове print(items) выведется строка вида: 
-#    "Жареные питоны, 0.3 г, 150.0 руб." (В качесве цены здесь понимается полная стоимость товара)
+#    "Жареные питоны, 0.3 г, 150.0 руб." (В качестве цены здесь понимается стоимость товара с учетом его количества)
 # 2. Магические методы, позволяющие сравнить между собой объекты по цене:
 #    - __gt__
 #    - __ge__
@@ -11,7 +11,6 @@
 #    - __eq__
 #    - __ne__
  
-
 
 class Item:
     def __init__(self, title, unit, price_for_unit, quantity):
@@ -50,20 +49,23 @@ class Item:
 # если в терминале хотя бы один пункт ложь, тогда ищите ошибку в коде,
 # А если совсем запутались, запустите наши тесты и мы подскажем
 if __name__ == '__main__':
-    dried_pythons = Item(title='Сушеные питоны',
-                   unit='г',
-                   price_for_unit=500,
-                   quantity=0.3)
+    dried_pythons = Item(
+        title='Сушеные питоны',
+        unit='г',
+        price_for_unit=500,
+        quantity=0.3)
     
-    fried_pythons = Item(title='Жареные питоны',
-                    unit='г',
-                    price_for_unit=500,
-                    quantity=0.3)
+    fried_pythons = Item(
+        title='Жареные питоны',
+        unit='г',
+        price_for_unit=500,
+        quantity=0.3)
     
-    cooked_pythons = Item(title='Варёные питоны',
-                    unit='г',
-                    price_for_unit=700,
-                    quantity=0.3)
+    cooked_pythons = Item(
+        title='Варёные питоны',
+        unit='г',
+        price_for_unit=700,
+        quantity=0.3)
 
     def true_lie(assertion):
         if assertion:
