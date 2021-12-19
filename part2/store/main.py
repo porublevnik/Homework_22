@@ -53,8 +53,8 @@ if __name__ == '__main__':
     my_store.add_item(title='Сушеные питоны', quantity=10)
     my_store.add_item(title='Сушеные питоны', quantity=10)
     my_store.add_item(title='Сырые питоны', quantity=5)
-    print(my_store.get_item(title='Сушеные питоны'), quantity=20)
-    print(my_store.get_item(title='Сырые питоны'), quantity=10)
-    print(my_store.get_item(title='Сырые питоны'), quantity=10)
+    print(my_store.get_item(title='Сушеные питоны', quantity=20))
+    print(my_store.get_item(title='Сырые питоны', quantity=10))
+    print(my_store.get_item(title='Сырые питоны', quantity=10))
     print(my_store.get_item(title='Админские барабаны', quantity=7))
 

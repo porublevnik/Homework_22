@@ -1,8 +1,8 @@
 # У нас есть класс кошелек, в котором есть поля – 
-# золотые, серебряные и медные монеты.
+# золотые, серебряные и бронзовые монеты.
 
-#  Одна золотая монета ровна десяти серебряным
-#  Одна серебряная монета ровна сотне бронзовых
+#  Одна золотая монета ровна десять серебряных
+#  Одна серебряная монета ровна сто бронзовых
 
 # Реализовать методы сравнения двух экземпляров
 # класса кошелёк, заполненных такими монетами.
@@ -73,7 +73,7 @@ if __name__ == '__main__':
         true_lie(big_wallet == big_silver_wallet))
     print(
         f" {small_silver_wallet} == {small_wallet}", 
-        true_lie(small_silver_wallet == small_wallet))
+        true_lie(small_silver_wallet != small_wallet))
     print(
         f" {medium_wallet} > {small_wallet}", 
         true_lie(medium_wallet > small_wallet)
