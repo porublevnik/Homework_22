@@ -41,10 +41,15 @@ class Unit:
 
 
 class StoneGuard(Unit):
-    # TODO опишите новый класс здесь
-    pass
-
-
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.was_attacked = False
+    def _get_damage(self, damage):
+        if self.was_attacked is False:
+            damage = 0
+            self.was_attacked = True
+            print(f'{self.name} блокирует урон!')
+        super()._get_damage(damage)
 # Логика кода ниже такая же, как и в предыдущем задании.
 # Если вдруг интересно, то можно
 # поэкспериментировать со значениями моделей=)

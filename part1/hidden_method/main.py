@@ -11,21 +11,28 @@
 #     Внесите соответсвующее изменение в метод add_item чтобы метод работал корректно
 # Стартовый код
 class Item:
-    def __init__(self, title, price, unit, quantity):
+    def __init__(self, title, price, unit, quantity, discount_value=None):
         self.title = title
         self.price = price
         self.unit = unit
         self.quantity = quantity
+        self.discount_value = discount_value
 
     def total_price(self):
-        return self.price * self.quantity
+        if self.discount_value is None:
+            return self.price * self.quantity
+        else:
+            return self._calculate_discount() * self.quantity
+
+    def _calculate_discount(self):
+        return self.price * (1 - self.discount_value)
 
 class Cheque:
     def __init__(self):
         self.items = []
 
-    def add_item(self, title, price, unit, quantity):
-        item = Item(title=title, price=price, unit=unit, quantity=quantity)
+    def add_item(self, title, price, unit, quantity, discount_value=None):
+        item = Item(title=title, price=price, unit=unit, quantity=quantity, discount_value=discount_value)
         self.items.append(item)
 
     def purchases(self):

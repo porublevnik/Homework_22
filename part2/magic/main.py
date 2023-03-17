@@ -24,25 +24,25 @@ class Item:
         return price
 
     def __repr__(self):
-        pass
+        return f'{self.title}, {self.quantity} {self.unit}, {self.total_price()} руб.'
 
     def __eq__(self, other):
-        pass
+        return self.total_price() == other.total_price()
 
     def __ne__(self, other):
-        pass
+        return self.total_price() != other.total_price()
 
     def __gt__(self, other):
-        pass
+        return self.total_price() > other.total_price()
 
     def __ge__(self, other):
-        pass
+        return self.total_price() >= other.total_price()
 
     def __lt__(self, other):
-        pass
+        return self.total_price() < other.total_price()
 
     def __le__(self, other):
-        pass
+        return self.total_price() <= other.total_price()
 
 
 # Здесь код для самопроверки, 

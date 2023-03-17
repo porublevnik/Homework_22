@@ -25,23 +25,26 @@
 # 4. Попробуйте запустить файл, должно всё сработать корректно=)
 
 
-def check_item(store, title):
-    return title in store
 
 
 class Store:
-    def add_item(self, store, title, quantity):
-        store[title] = store.get(title, 0) + quantity
+    def __init__(self):
+        self.store = {}
+    def add_item(self, title:str, quantity:int):
+        self.store[title] = self.store.get(title, 0) + quantity
 
-    def get_item(self, store, title, quantity):
-        if not check_item(store=store, title=title):
+    def _check_item(self, title:str):
+        return title in self.store
+
+    def get_item(self, title:str, quantity:int):
+        if not self._check_item(title):
             return 'Не было на складе'
-        quantity = self._check_quantity_limits(store=store, title=title, quantity=quantity)
-        store[title] -= quantity
+        quantity = self._check_quantity_limits(title=title, quantity=quantity)
+        self.store[title] -= quantity
         return title, quantity
 
-    def _check_quantity_limits(self, store, title, quantity):
-        current_qnt = store[title]
+    def _check_quantity_limits(self, title:str, quantity:int):
+        current_qnt = self.store[title]
         if current_qnt < quantity:
             quantity = current_qnt
         return quantity

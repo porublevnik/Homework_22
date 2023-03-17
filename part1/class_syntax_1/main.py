@@ -24,9 +24,14 @@
 # Cумма: 410
 
 class Item:
-    def __init__(self, title, price):
+    def __init__(self, title, price, unit, quantity):
         self.title = title
         self.price = price
+        self.unit = unit
+        self.quantity = quantity
+
+    def total_price(self):
+        return self.price * self.quantity
 
 
 class Cheque:
@@ -34,11 +39,15 @@ class Cheque:
         self.items = []
 
     def purchases(self):
-        return "\n".join([f"{item.title} - {item.price}" for item in self.items])
+        return "\n".join([f"{item.title}, {item.quantity} {item.unit} - {item.price}" for item in self.items])
     
     def get_sum(self):
-        cheque_sum = sum([item.price for item in self.items])
+        cheque_sum = sum([item.total_price() for item in self.items])
         return f"Сумма: {cheque_sum}"
+
+    def add_item(self, title, price, unit, quantity):
+        cheque.items.append(Item(title, price, unit, quantity))
+        pass
     
 # Это проверочный код, запустите файл, чтобы увидеть логику работы классов
 if __name__ == '__main__':
